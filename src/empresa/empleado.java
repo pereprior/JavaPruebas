@@ -2,7 +2,7 @@ package empresa;
 
 import java.util.*;
 
-public class empleado {
+public class empleado implements Comparable, Interfaz {
 
     public empleado(String nombre, double sueldo, int anyo, int mes, int dia) {
 
@@ -23,6 +23,7 @@ public class empleado {
 
     }
 
+    @Override
     public String getNombre() {
 
         return this.nombre;
@@ -55,4 +56,18 @@ public class empleado {
     private int id;
     private static int nextId = 1;
 
+    @Override
+    public int compareTo(Object o) {
+        empresa.empleado otroEmpleado = (empresa.empleado) o;
+
+        if (this.sueldo<otroEmpleado.sueldo) {
+            return -1;
+        }
+
+        if (this.sueldo>otroEmpleado.sueldo) {
+            return 1;
+        }
+
+        return 0;
+    }
 }
